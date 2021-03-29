@@ -24,12 +24,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button3.setOnClickListener(this)
         button4.setOnClickListener(this)
 
-        button5.setOnClickListener { view ->
-            Snackbar.make(view, "数値を入力してください", Snackbar.LENGTH_INDEFINITE)
-                .setAction("消す"){
-                    Log.d("calc","Snackberをタップした")
-                }.show()
-        }
+
+
+
     }
 
     override fun onClick(v: View) {
@@ -59,8 +56,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 intent.putExtra("A", num6)
                 startActivity(intent)
             }
-        } catch (e: NumberFormatException) {
+        } catch (e: Exception) {
             Log.d("calc", "計算できません")
+            Log.d("calc", e.message.toString())
+
+
+            Snackbar.make(v, "数値を入力してください", Snackbar.LENGTH_INDEFINITE)
+                .setAction("消す"){
+                    Log.d("calc","Snackberをタップした")
+                }.show()
         }
     }
 
